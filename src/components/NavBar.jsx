@@ -9,20 +9,34 @@ import IMAGES from "../themes/Images";
 import COLORS from "../themes/Colors";
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1
-  },
   appBar: {
     backgroundColor: COLORS.white,
-    color: COLORS.darkBlue
+    color: COLORS.darkBlue,
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center"
   },
-  menuButton: {},
   title: {
-    flexGrow: 1
+    padding: "0px 15px",
+    fontSize: "15px"
   },
   logo: {
     width: "50px",
-    height: "50px"
+    height: "50px",
+    marginLeft: "75px"
+  },
+  verticalLine: {
+    borderLeft: "1px solid lightgrey",
+    height: "50px",
+    marginLeft: "30px",
+    marginRight: "30px"
+  },
+  menuButton: {
+    marginRight: "55px",
+    color: COLORS.white,
+    backgroundColor: COLORS.darkBlue,
+    padding: "10px 15px"
   }
 }));
 
@@ -32,13 +46,24 @@ export default function NavBar() {
   return (
     <div className={classes.root}>
       <AppBar className={classes.appBar} position="static">
+        <img className={classes.logo} src={IMAGES.logo} alt="logo" />
         <Toolbar>
-          <img className={classes.logo} src={IMAGES.logo} alt="logo" />
-
           <Typography variant="h6" className={classes.title}>
-            News
+            Programs
           </Typography>
-          <Button color="inherit">Apply Now</Button>
+          <Typography variant="h6" className={classes.title}>
+            About
+          </Typography>
+          <Typography variant="h6" className={classes.title}>
+            Admissions
+          </Typography>
+          <Typography variant="h6" className={classes.title}>
+            Connect
+          </Typography>
+          <div className={classes.verticalLine} />
+          <Button className={classes.menuButton} color="inherit">
+            Apply Now
+          </Button>
         </Toolbar>
       </AppBar>
     </div>
