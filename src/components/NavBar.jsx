@@ -1,9 +1,15 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  Menu,
+  MenuItem,
+  Link,
+  Popover
+} from "@material-ui/core";
 
 import IMAGES from "../themes/Images";
 import COLORS from "../themes/Colors";
@@ -45,20 +51,76 @@ const useStyles = makeStyles(theme => ({
     "&:hover": {
       backgroundColor: COLORS.lightBlue
     }
+  },
+  popover: {
+    pointerEvents: "none"
+  },
+  paper: {
+    padding: theme.spacing(1)
   }
 }));
 
 export default function NavBar() {
+  const [anchorEl, setAnchorEl] = React.useState(null);
   const classes = useStyles();
+
+  function handlePopoverOpen(event) {
+    setAnchorEl(event.currentTarget);
+  }
+
+  function handlePopoverClose() {
+    setAnchorEl(null);
+  }
+
+  const open = Boolean(anchorEl);
 
   return (
     <div>
       <AppBar className={classes.appBar} position="static">
         <img className={classes.logo} src={IMAGES.logo} alt="logo" />
         <Toolbar>
-          <Typography variant="h6" className={classes.title}>
+          <Typography
+            aria-owns={open ? "mouse-over-popover" : undefined}
+            aria-haspopup="true"
+            onMouseEnter={handlePopoverOpen}
+            variant="h6"
+            className={classes.title}
+          >
             Programs
           </Typography>
+          <Popover
+            id="mouse-over-popover"
+            className={classes.popover}
+            classes={{
+              paper: classes.paper
+            }}
+            open={open}
+            anchorEl={anchorEl}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "left"
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "left"
+            }}
+            onClose={handlePopoverClose}
+            disableRestoreFocus
+            onMouseLeave={handlePopoverClose}
+          >
+            <Menu anchorEl={anchorEl} open={open}>
+              <div onMouseLeave={handlePopoverClose}>
+                <MenuItem onClick={handlePopoverClose}>
+                  Software Engineering
+                </MenuItem>
+                <MenuItem onClick={handlePopoverClose}>UX Engineering</MenuItem>
+                <MenuItem onClick={handlePopoverClose}>
+                  Digital Marketing
+                </MenuItem>
+                <MenuItem onClick={handlePopoverClose}>Kenzie Free</MenuItem>
+              </div>
+            </Menu>
+          </Popover>
           <Typography variant="h6" className={classes.title}>
             About
           </Typography>
