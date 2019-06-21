@@ -19,7 +19,9 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     padding: "0px 15px",
-    fontSize: "15px"
+    fontSize: "16px",
+    fontFamily: "inherit",
+    fontWeight: "500"
   },
   logo: {
     width: "50px",
@@ -28,15 +30,21 @@ const useStyles = makeStyles(theme => ({
   },
   verticalLine: {
     borderLeft: "1px solid lightgrey",
-    height: "50px",
-    marginLeft: "30px",
-    marginRight: "30px"
+    height: "40px",
+    marginLeft: "25px",
+    marginRight: "20px"
   },
   menuButton: {
-    marginRight: "55px",
+    marginRight: "65px",
     color: COLORS.white,
     backgroundColor: COLORS.darkBlue,
-    padding: "10px 15px"
+    padding: "8px 25px",
+    textTransform: "capitalize",
+    fontSize: "16px",
+    fontFamily: "inherit",
+    "&:hover": {
+      backgroundColor: COLORS.lightBlue
+    }
   }
 }));
 
@@ -44,7 +52,7 @@ export default function NavBar() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <div>
       <AppBar className={classes.appBar} position="static">
         <img className={classes.logo} src={IMAGES.logo} alt="logo" />
         <Toolbar>
@@ -60,8 +68,15 @@ export default function NavBar() {
           <Typography variant="h6" className={classes.title}>
             Connect
           </Typography>
+          <Typography variant="h6" className={classes.title}>
+            Blog
+          </Typography>
           <div className={classes.verticalLine} />
-          <Button className={classes.menuButton} color="inherit">
+          <Button
+            variant="contained"
+            className={classes.menuButton}
+            color="primary"
+          >
             Apply Now
           </Button>
         </Toolbar>
