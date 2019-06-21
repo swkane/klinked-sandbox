@@ -40,7 +40,7 @@ const useStyles = makeStyles(theme => ({
     marginLeft: "25px",
     marginRight: "20px"
   },
-  menuButton: {
+  callToAction: {
     marginRight: "65px",
     color: COLORS.white,
     backgroundColor: COLORS.darkBlue,
@@ -55,8 +55,15 @@ const useStyles = makeStyles(theme => ({
   popover: {
     pointerEvents: "none"
   },
-  paper: {
-    padding: theme.spacing(1)
+  paperMenu: {
+    backgroundColor: COLORS.darkBlue,
+    color: COLORS.white
+  },
+  paperMenuItem: {
+    margin: "0",
+    "&:hover": {
+      color: COLORS.teal
+    }
   }
 }));
 
@@ -91,9 +98,6 @@ export default function NavBar() {
           <Popover
             id="mouse-over-popover"
             className={classes.popover}
-            classes={{
-              paper: classes.paper
-            }}
             open={open}
             anchorEl={anchorEl}
             anchorOrigin={{
@@ -108,16 +112,38 @@ export default function NavBar() {
             disableRestoreFocus
             onMouseLeave={handlePopoverClose}
           >
-            <Menu anchorEl={anchorEl} open={open}>
+            <Menu
+              classes={{
+                paper: classes.paperMenu
+              }}
+              anchorEl={anchorEl}
+              open={open}
+            >
               <div onMouseLeave={handlePopoverClose}>
-                <MenuItem onClick={handlePopoverClose}>
+                <MenuItem
+                  className={classes.paperMenuItem}
+                  onClick={handlePopoverClose}
+                >
                   Software Engineering
                 </MenuItem>
-                <MenuItem onClick={handlePopoverClose}>UX Engineering</MenuItem>
-                <MenuItem onClick={handlePopoverClose}>
+                <MenuItem
+                  className={classes.paperMenuItem}
+                  onClick={handlePopoverClose}
+                >
+                  UX Engineering
+                </MenuItem>
+                <MenuItem
+                  className={classes.paperMenuItem}
+                  onClick={handlePopoverClose}
+                >
                   Digital Marketing
                 </MenuItem>
-                <MenuItem onClick={handlePopoverClose}>Kenzie Free</MenuItem>
+                <MenuItem
+                  className={classes.paperMenuItem}
+                  onClick={handlePopoverClose}
+                >
+                  Kenzie Free
+                </MenuItem>
               </div>
             </Menu>
           </Popover>
@@ -136,7 +162,7 @@ export default function NavBar() {
           <div className={classes.verticalLine} />
           <Button
             variant="contained"
-            className={classes.menuButton}
+            className={classes.callToAction}
             color="primary"
           >
             Apply Now
