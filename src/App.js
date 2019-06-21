@@ -9,7 +9,7 @@ function App() {
       <NavBar />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>KlinkedIn Coming Soon!</p>
+        <p>Kenzie Profiles Coming Soon!</p>
       </header>
     </div>
   );

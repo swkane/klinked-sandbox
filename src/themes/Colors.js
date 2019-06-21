@@ -16,6 +16,7 @@ export default {
   red: "#cf3c21",
   darkBlue: "#043464",
   lightBlue: "#1f66b8",
+  teal: "#b5decc",
   silverTree: "#66b38d",
   harp: "#ebf5ed",
   eastern: "#1985b0",
