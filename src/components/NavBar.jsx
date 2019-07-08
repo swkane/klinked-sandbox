@@ -1,5 +1,6 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, useMediaQuery } from "@material-ui/core";
+import { useTheme } from "@material-ui/core/styles";
 import {
   AppBar,
   Toolbar,
@@ -66,6 +67,15 @@ const useStyles = makeStyles(theme => ({
     }
   }
 }));
+
+const NavBarContainer = () => {
+  const theme = useTheme();
+  console.log(theme);
+  const matches = useMediaQuery(theme.breakpoints.down("sm"));
+  console.log({ matches });
+
+  return matches ? <div>small</div> : <NavBar />;
+};
 
 export default function NavBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -169,6 +179,7 @@ export default function NavBar() {
           </Button>
         </Toolbar>
       </AppBar>
+      <NavBarContainer />
     </div>
   );
 }
