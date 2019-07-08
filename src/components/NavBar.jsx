@@ -91,81 +91,98 @@ export default function NavBar() {
 
   const open = Boolean(anchorEl);
 
+  const navItems = [
+    {
+      title: "Programs",
+      menuItems: [
+        "Software Engineering",
+        "UX Engineering",
+        "Digital Marketing",
+        "Kenzie Free"
+      ]
+    },
+    {
+      title: "About",
+      menuItems: [
+        "About Kenzie",
+        "Student Stories",
+        "Employers",
+        "Mentors",
+        "Butler Kenzie Joint Certificates",
+        "FAQ"
+      ]
+    },
+    {
+      title: "Admissions",
+      menuItems: [
+        "Criteria",
+        "Program Cost",
+        "Scholarships",
+        "Earn and Learn",
+        "Degree Pathways"
+      ]
+    },
+    {
+      title: "Connect",
+      menuItems: ["Events", "Press", "Contact Us"]
+    }
+  ];
+
   return (
     <div>
       <AppBar className={classes.appBar} position="static">
         <img className={classes.logo} src={IMAGES.logo} alt="logo" />
         <Toolbar>
-          <Typography
-            aria-owns={open ? "mouse-over-popover" : undefined}
-            aria-haspopup="true"
-            onMouseEnter={handlePopoverOpen}
-            variant="h6"
-            className={classes.title}
-          >
-            Programs
-          </Typography>
-          <Popover
-            id="mouse-over-popover"
-            className={classes.popover}
-            open={open}
-            anchorEl={anchorEl}
-            anchorOrigin={{
-              vertical: "bottom",
-              horizontal: "left"
-            }}
-            transformOrigin={{
-              vertical: "top",
-              horizontal: "left"
-            }}
-            onClose={handlePopoverClose}
-            disableRestoreFocus
-            onMouseLeave={handlePopoverClose}
-          >
-            <Menu
-              classes={{
-                paper: classes.paperMenu
-              }}
-              anchorEl={anchorEl}
-              open={open}
-            >
-              <div onMouseLeave={handlePopoverClose}>
-                <MenuItem
-                  className={classes.paperMenuItem}
-                  onClick={handlePopoverClose}
+          {navItems.map(navItem => (
+            <React.Fragment>
+              <Typography
+                aria-owns={open ? "mouse-over-popover" : undefined}
+                aria-haspopup="true"
+                onMouseEnter={handlePopoverOpen}
+                variant="h6"
+                className={classes.title}
+              >
+                {navItem.title}
+              </Typography>
+              <Popover
+                id="mouse-over-popover"
+                className={classes.popover}
+                open={open}
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "left"
+                }}
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "left"
+                }}
+                onClose={handlePopoverClose}
+                disableRestoreFocus
+                onMouseLeave={handlePopoverClose}
+              >
+                <Menu
+                  classes={{
+                    paper: classes.paperMenu
+                  }}
+                  anchorEl={anchorEl}
+                  open={open}
                 >
-                  Software Engineering
-                </MenuItem>
-                <MenuItem
-                  className={classes.paperMenuItem}
-                  onClick={handlePopoverClose}
-                >
-                  UX Engineering
-                </MenuItem>
-                <MenuItem
-                  className={classes.paperMenuItem}
-                  onClick={handlePopoverClose}
-                >
-                  Digital Marketing
-                </MenuItem>
-                <MenuItem
-                  className={classes.paperMenuItem}
-                  onClick={handlePopoverClose}
-                >
-                  Kenzie Free
-                </MenuItem>
-              </div>
-            </Menu>
-          </Popover>
-          <Typography variant="h6" className={classes.title}>
-            About
-          </Typography>
-          <Typography variant="h6" className={classes.title}>
-            Admissions
-          </Typography>
-          <Typography variant="h6" className={classes.title}>
-            Connect
-          </Typography>
+                  <div onMouseLeave={handlePopoverClose}>
+                    {navItem.menuItems.map(item => (
+                      <MenuItem
+                        className={classes.paperMenuItem}
+                        onClick={handlePopoverClose}
+                      >
+                        {item}
+                      </MenuItem>
+                    ))}
+                  </div>
+                </Menu>
+              </Popover>
+            </React.Fragment>
+          ))}
+
           <Typography variant="h6" className={classes.title}>
             Blog
           </Typography>
@@ -179,7 +196,6 @@ export default function NavBar() {
           </Button>
         </Toolbar>
       </AppBar>
-      <NavBarContainer />
     </div>
   );
 }
