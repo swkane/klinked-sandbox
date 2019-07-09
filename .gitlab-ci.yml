@@ -1,8 +1,8 @@
 image: node:alpine
 
 stages:
-    -build
-    -deploy
+    - build
+    - deploy
     
 variables:
   AWS_DEFAULT_REGION: us-east-2   # The region of our S3 bucket
