@@ -30,6 +30,6 @@ deploy to s3:
   stage: deploy
   script:
     - pip install awscli
-    - aws s3 cp ./ s3://profiles.kenzie.academy/ --recursive --exclude "*" --include "*.html"
+    - aws s3 sync build/ s3://profiles.kenzie.academy --exclude ".DS_Store/*" --cache-control "max-age=120000" --delete
   only:
     - master # Only run on master branch
