@@ -50,18 +50,6 @@ const useStyles = makeStyles(theme => ({
 export const NavBarItem = ({ navItem }) => {
   const classes = useStyles();
 
-  // const [anchorEl, setAnchorEl] = React.useState(null);
-
-  // function handlePopoverOpen(event) {
-  //   setAnchorEl(event.currentTarget);
-  // }
-
-  // function handlePopoverClose() {
-  //   setAnchorEl(null);
-  // }
-
-  // const open = Boolean(anchorEl);
-
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
 
@@ -79,7 +67,7 @@ export const NavBarItem = ({ navItem }) => {
 
   return (
     <React.Fragment>
-      <Link className={classes.link} href={BASE_HOMEPAGE + "/apply"}>
+      <Link className={classes.link} href={BASE_HOMEPAGE + navItem.path}>
         <Typography
           className={classes.title}
           ref={anchorRef}
@@ -106,12 +94,19 @@ export const NavBarItem = ({ navItem }) => {
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList className={classes.paperMenu}>
                   {navItem.menuItems.map(item => (
-                    <MenuItem
-                      className={classes.paperMenuItem}
-                      onClick={handleClose}
+                    <Link
+                      className={classes.link}
+                      href={
+                        item.external ? item.path : BASE_HOMEPAGE + item.path
+                      }
                     >
-                      {item}
-                    </MenuItem>
+                      <MenuItem
+                        className={classes.paperMenuItem}
+                        onClick={handleClose}
+                      >
+                        {item.text}
+                      </MenuItem>
+                    </Link>
                   ))}
                 </MenuList>
               </ClickAwayListener>
