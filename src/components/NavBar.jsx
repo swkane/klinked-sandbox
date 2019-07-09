@@ -1,7 +1,14 @@
 import React from "react";
-import { makeStyles, useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
-import { AppBar, Toolbar, Typography, Button, Link } from "@material-ui/core";
+import {
+  makeStyles,
+  useMediaQuery,
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  Link
+} from "@material-ui/core";
 
 import IMAGES from "../themes/Images";
 import COLORS from "../themes/Colors";
