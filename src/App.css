@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  font-family: Avenir, "proxima-nova", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
 }
 
 .App-logo {
