@@ -24,8 +24,10 @@ build site:
             - build/
     
 deploy to s3:
+  image: python:latest
   stage: deploy
   script:
+    - pip install awscli
     - sh sync.sh
   only:
     - master # Only run on master branch
