@@ -1,8 +1,7 @@
 import React from "react";
-import { useTheme } from "@material-ui/core/styles";
+
 import {
   makeStyles,
-  useMediaQuery,
   AppBar,
   Toolbar,
   Typography,
@@ -61,15 +60,6 @@ const useStyles = makeStyles(theme => ({
     marginRight: "20px"
   }
 }));
-
-const NavBarContainer = () => {
-  const theme = useTheme();
-  console.log(theme);
-  const matches = useMediaQuery(theme.breakpoints.down("sm"));
-  console.log({ matches });
-
-  return matches ? <div>small</div> : <NavBar />;
-};
 
 export default function NavBar() {
   const classes = useStyles();
