@@ -7,6 +7,8 @@ stages:
 variables:
   AWS_DEFAULT_REGION: us-east-2   # The region of our S3 bucket
   BUCKET_NAME: profiles.kenzie.academy   # Your bucket name
+  AWS_ACCESS_KEY_ID: AKIASY73XR2M2TUI7IEL
+  AWS_SECRET_ACCESS_KEY: /s5qCvHr6jjzB8E/yYfbOHARV586EpvV53x+VUpC
   
 cache:
   paths:
@@ -28,6 +30,6 @@ deploy to s3:
   stage: deploy
   script:
     - pip install awscli
-    - sh sync.sh
+    - aws s3 cp ./ s3://profiles.kenzie.academy/ --recursive --exclude "*" --include "*.html"
   only:
     - master # Only run on master branch
