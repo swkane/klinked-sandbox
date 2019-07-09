@@ -1,18 +1,19 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import { useTheme } from "@material-ui/core/styles";
 import {
+  makeStyles,
+  useMediaQuery,
   AppBar,
   Toolbar,
   Typography,
   Button,
-  Menu,
-  MenuItem,
-  Link,
-  Popover
+  Link
 } from "@material-ui/core";
 
 import IMAGES from "../themes/Images";
 import COLORS from "../themes/Colors";
+import { BASE_HOMEPAGE } from "../constants";
+import { NavBarItem } from "./NavItem";
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -22,23 +23,6 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center"
-  },
-  title: {
-    padding: "0px 15px",
-    fontSize: "16px",
-    fontFamily: "inherit",
-    fontWeight: "500"
-  },
-  logo: {
-    width: "50px",
-    height: "50px",
-    marginLeft: "75px"
-  },
-  verticalLine: {
-    borderLeft: "1px solid lightgrey",
-    height: "40px",
-    marginLeft: "25px",
-    marginRight: "20px"
   },
   callToAction: {
     marginRight: "65px",
@@ -52,121 +36,120 @@ const useStyles = makeStyles(theme => ({
       backgroundColor: COLORS.lightBlue
     }
   },
-  popover: {
-    pointerEvents: "none"
-  },
-  paperMenu: {
-    backgroundColor: COLORS.darkBlue,
-    color: COLORS.white
-  },
-  paperMenuItem: {
-    margin: "0",
+  link: {
+    color: "inherit",
     "&:hover": {
-      color: COLORS.teal
+      color: COLORS.teal,
+      textDecoration: "none"
     }
+  },
+  logo: {
+    width: "50px",
+    height: "50px",
+    marginLeft: "75px"
+  },
+  title: {
+    padding: "0px 15px",
+    fontSize: "16px",
+    fontFamily: "inherit",
+    fontWeight: "500"
+  },
+  verticalLine: {
+    borderLeft: "1px solid lightgrey",
+    height: "40px",
+    marginLeft: "25px",
+    marginRight: "20px"
   }
 }));
 
+const NavBarContainer = () => {
+  const theme = useTheme();
+  console.log(theme);
+  const matches = useMediaQuery(theme.breakpoints.down("sm"));
+  console.log({ matches });
+
+  return matches ? <div>small</div> : <NavBar />;
+};
+
 export default function NavBar() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
   const classes = useStyles();
 
-  function handlePopoverOpen(event) {
-    setAnchorEl(event.currentTarget);
-  }
-
-  function handlePopoverClose() {
-    setAnchorEl(null);
-  }
-
-  const open = Boolean(anchorEl);
+  const navItems = [
+    {
+      title: "Programs",
+      path: "/software-engineering",
+      menuItems: [
+        { text: "Software Engineering", path: "/software-engineering" },
+        { text: "UX Engineering", path: "/ux-engineer" },
+        { text: "Digital Marketing", path: "/digital-marketing" },
+        {
+          text: "Kenzie Free",
+          path: "https://online.kenzie.academy",
+          external: true
+        }
+      ]
+    },
+    {
+      title: "About",
+      path: "/about-kenzie-academy",
+      menuItems: [
+        { text: "About Kenzie", path: "/about-kenzie-academy" },
+        { text: "Student Stories", path: "/students" },
+        { text: "Employers", path: "/employers" },
+        { text: "Mentors", path: "/mentors" },
+        {
+          text: "Butler Kenzie Joint Certificates",
+          path: "/butler-kenzie-joint-certificates"
+        },
+        { text: "FAQ", path: "/faq" }
+      ]
+    },
+    {
+      title: "Admissions",
+      path: "/criteria",
+      menuItems: [
+        { text: "Criteria", path: "/criteria" },
+        { text: "Program Cost", path: "/program-cost" },
+        { text: "Scholarships", path: "/scholarships" },
+        { text: "Earn and Learn", path: "/earn-and-learn" },
+        { text: "Degree Pathways", path: "/degree-pathways" }
+      ]
+    },
+    {
+      title: "Connect",
+      path: "/events",
+      menuItems: [
+        { text: "Events", path: "/events" },
+        { text: "Press", path: "/news" },
+        { text: "Contact Us", path: "/connect-with-kenzie" }
+      ]
+    }
+  ];
 
   return (
     <div>
       <AppBar className={classes.appBar} position="static">
         <img className={classes.logo} src={IMAGES.logo} alt="logo" />
         <Toolbar>
-          <Typography
-            aria-owns={open ? "mouse-over-popover" : undefined}
-            aria-haspopup="true"
-            onMouseEnter={handlePopoverOpen}
-            variant="h6"
-            className={classes.title}
-          >
-            Programs
-          </Typography>
-          <Popover
-            id="mouse-over-popover"
-            className={classes.popover}
-            open={open}
-            anchorEl={anchorEl}
-            anchorOrigin={{
-              vertical: "bottom",
-              horizontal: "left"
-            }}
-            transformOrigin={{
-              vertical: "top",
-              horizontal: "left"
-            }}
-            onClose={handlePopoverClose}
-            disableRestoreFocus
-            onMouseLeave={handlePopoverClose}
-          >
-            <Menu
-              classes={{
-                paper: classes.paperMenu
-              }}
-              anchorEl={anchorEl}
-              open={open}
-            >
-              <div onMouseLeave={handlePopoverClose}>
-                <MenuItem
-                  className={classes.paperMenuItem}
-                  onClick={handlePopoverClose}
-                >
-                  Software Engineering
-                </MenuItem>
-                <MenuItem
-                  className={classes.paperMenuItem}
-                  onClick={handlePopoverClose}
-                >
-                  UX Engineering
-                </MenuItem>
-                <MenuItem
-                  className={classes.paperMenuItem}
-                  onClick={handlePopoverClose}
-                >
-                  Digital Marketing
-                </MenuItem>
-                <MenuItem
-                  className={classes.paperMenuItem}
-                  onClick={handlePopoverClose}
-                >
-                  Kenzie Free
-                </MenuItem>
-              </div>
-            </Menu>
-          </Popover>
-          <Typography variant="h6" className={classes.title}>
-            About
-          </Typography>
-          <Typography variant="h6" className={classes.title}>
-            Admissions
-          </Typography>
-          <Typography variant="h6" className={classes.title}>
-            Connect
-          </Typography>
-          <Typography variant="h6" className={classes.title}>
-            Blog
-          </Typography>
+          {navItems.map(navItem => (
+            <NavBarItem navItem={navItem} />
+          ))}
+          <Link className={classes.link} href={BASE_HOMEPAGE + "/blog"}>
+            <Typography variant="h6" className={classes.title}>
+              Blog
+            </Typography>
+          </Link>
+
           <div className={classes.verticalLine} />
-          <Button
-            variant="contained"
-            className={classes.callToAction}
-            color="primary"
-          >
-            Apply Now
-          </Button>
+          <Link className={classes.link} href={BASE_HOMEPAGE + "/apply"}>
+            <Button
+              variant="contained"
+              className={classes.callToAction}
+              color="primary"
+            >
+              Apply Now
+            </Button>
+          </Link>
         </Toolbar>
       </AppBar>
     </div>
