@@ -1,4 +1,4 @@
-image: srikoushik/aws-cli-node-docker
+image: node:alpine
 
 stages:
     - build
