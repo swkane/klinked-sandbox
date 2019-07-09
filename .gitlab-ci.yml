@@ -31,5 +31,6 @@ deploy to s3:
   script:
     - pip install awscli
     - aws s3 sync build/ s3://profiles.kenzie.academy --exclude ".DS_Store/*" --cache-control "max-age=120000" --delete
+    - curl -X POST -H 'Content-type: application/json' --data '{"text":"New commits have been deployed to Kenzie Profiles - Production"}' https://hooks.slack.com/services/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
   only:
     - master # Only run on master branch
