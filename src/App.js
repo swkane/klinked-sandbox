@@ -1,17 +1,22 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import NavBar from "./components/NavBar";
+import { Route, Switch } from 'react-router-dom';
+//gives you access to theme variables inside your components
+import About from './components/About';
+import BaseLayout from './components/BaseLayout';
+import Home from './components/Home';
 
 function App() {
   return (
     <div className="App">
-      <NavBar />
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Kenzie Profiles Coming Soon!</p>
-      </header>
-    </div>
+    <BaseLayout>
+      <Switch>
+        <Route exact path='/' component={Home}/>
+        <Route path='/about' component={About}/>
+      </Switch>
+    </BaseLayout>
+  </div>
+
   );
 }
 
