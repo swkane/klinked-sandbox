@@ -1,0 +1,34 @@
+image: node:alpine
+
+stages:
+    - build
+    - deploy
+    
+variables:
+  AWS_DEFAULT_REGION: us-east-2   # The region of our S3 bucket
+  BUCKET_NAME: profiles.kenzie.academy   # Your bucket name
+  
+cache:
+  paths:
+  - node_modules
+  
+build site:
+    stage: build
+    script:
+        - echo "Building"
+        - npm install
+        - npm run build --prod
+        - echo "Build Successful"
+    artifacts:
+        paths:
+            - build/
+    
+deploy to s3:
+  image: python:latest
+  stage: deploy
+  script:
+    - pip install awscli
+    - aws s3 sync build/ s3://profiles.kenzie.academy --exclude ".DS_Store/*" --cache-control "max-age=120000" --delete
+    - sh slackbot.sh
+  only:
+    - master # Only run on master branch
