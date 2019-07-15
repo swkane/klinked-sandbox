@@ -3,9 +3,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import {
     Card,
     Avatar,
-    SvgIcon,
 } from "@material-ui/core";
-// import { ReactComponent as Icon } from "../assets/icon-education_gray.svg";
+import education from "../assets/icon-education_gray.svg";
 
 
 const useStyles = makeStyles(theme => ({
@@ -133,7 +132,7 @@ export default function StudentCard() {
                     </div>          
                 </div>
                 <div className={classes.lowerContainer}>
-                    <img src="../assets/icon-education_gray.svg" />
+                    <img src={education} />
                     <div className={classes.education}>
                         Certificate in Fullstack Development, Associate in Business
                     </div>
