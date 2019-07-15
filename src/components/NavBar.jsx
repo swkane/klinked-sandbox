@@ -13,6 +13,7 @@ import {
 
 import IMAGES from "../themes/Images";
 import COLORS from "../themes/Colors";
+import StudentCard from "../components/StudentCard";
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -169,6 +170,7 @@ export default function NavBar() {
           </Button>
         </Toolbar>
       </AppBar>
+      <StudentCard></StudentCard>
     </div>
   );
 }
