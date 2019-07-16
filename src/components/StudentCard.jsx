@@ -87,7 +87,6 @@ const useStyles = makeStyles(theme => ({
         letterSpacing: "0.44px",
         lineHeight: "25px",
         textAlign: "right",
-        // paddingLeft: "20px",
     },
     wrapperContainer: {
         display: "flex",
