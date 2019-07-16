@@ -4,7 +4,11 @@ import {
     Card,
     Avatar,
 } from "@material-ui/core";
-import education from "../assets/icon-education_gray.svg";
+
+import educationIcon from "../assets/icon-education_gray.svg";
+import locationIcon from "../assets/icon-location_gray.svg";
+import jobIcon from "../assets/icon-work_gray.svg";
+
 
 
 const useStyles = makeStyles(theme => ({
@@ -53,6 +57,7 @@ const useStyles = makeStyles(theme => ({
         fontSize: "18px",
         letterSpacing: "0.44px",
         lineHeight: "25px",
+        marginBottom: "10px",
     },
     job: {
         height: "24.88px",
@@ -71,6 +76,7 @@ const useStyles = makeStyles(theme => ({
         lineHeight: "25px",
         textAlign: "right",
         textOverflow: "ellipsis",
+        paddingRight: "18px",
     },
     location: {
         height: "25px",
@@ -81,7 +87,7 @@ const useStyles = makeStyles(theme => ({
         letterSpacing: "0.44px",
         lineHeight: "25px",
         textAlign: "right",
-        paddingLeft: "20px",
+        // paddingLeft: "20px",
     },
     wrapperContainer: {
         display: "flex",
@@ -94,10 +100,10 @@ const useStyles = makeStyles(theme => ({
         paddingLeft: "25px",
         width: "100%",
     },
-    leftContainer: {
+    upperLeft: {
         textAlign: "left",
     },
-    rightContainer: {
+    upperRight: {
         display: "flex",
         textAlign: "right",
         marginLeft: "auto",
@@ -110,6 +116,14 @@ const useStyles = makeStyles(theme => ({
         paddingBottom: "20px",
         textAlign: "left",
         paddingLeft: "25px",
+        width: "100%",
+        whiteSpace: "nowrap",
+    },
+    icon: {
+        width: "20px",
+        height: "20px",
+        float: "left",
+        marginRight: "8px",
     },
 }));
 
@@ -122,20 +136,22 @@ export default function StudentCard() {
             <Avatar className={classes.avatar} src="https://cdn.pixabay.com/photo/2017/10/10/00/49/female-2835524_960_720.jpg"></Avatar>
             <div className={classes.wrapperContainer}>
                 <div className={classes.topContainer}>
-                    <div className={classes.leftContainer}>
+                    <div className={classes.upperLeft}>
                         <div className={classes.name}>Katie Johnson</div>
                         <div className={classes.title}>Software Engineer</div>
                     </div>
-                    <div className={classes.rightContainer}>
+                    <div className={classes.upperRight}>
                         <div className={classes.quote}>"Jump on life and hang on!"</div>
+                        <img src={locationIcon} className={classes.icon} alt="location" />
                         <div className={classes.location}>Indianapolis, IN</div>
                     </div>          
                 </div>
                 <div className={classes.lowerContainer}>
-                    <img src={education} />
+                    <img src={educationIcon} className={classes.icon} alt="education" />
                     <div className={classes.education}>
                         Certificate in Fullstack Development, Associate in Business
                     </div>
+                    <img src={jobIcon} className={classes.icon} alt="job" />
                     <div className={classes.job}>Kenzie Coach, Sales Rep.</div>
                 </div>
             </div>

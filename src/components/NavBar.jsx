@@ -12,6 +12,9 @@ import {
 import IMAGES from "../themes/Images";
 import COLORS from "../themes/Colors";
 import StudentCard from "../components/StudentCard";
+import { BASE_HOMEPAGE } from "../constants";
+import { NavBarItem } from "./NavItem";
+
 
 const useStyles = makeStyles(theme => ({
   appBar: {
