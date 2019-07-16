@@ -29,10 +29,14 @@ const useStyles = makeStyles(theme => ({
             '& ul': {padding: '3px'},
             '& li':{
                 listStyle: 'none',
-                fontSize: '15px',
+                fontSize: '16px',
                 textAlign: 'left',
                 paddingBottom: '10px',
             },
+      },
+      '& b':{
+        fontWeight: '900',
+        fontSize: '16px',
       },
       '& .connect':{
           display: 'flex',
@@ -40,13 +44,13 @@ const useStyles = makeStyles(theme => ({
           alignItems: 'flex-start',
           margin: '0px 10px 10px 10px',
           '& img': {
-              height: '32px',
+              height: '36px',
               color: 'white',
               padding: '5px'
           },
           '& b': {paddingBottom: '15px'},
           '& .address': {
-              fontSize: '12px',
+              fontSize: '14px',
               textAlign: 'left',
           },
       },
@@ -79,8 +83,18 @@ const useStyles = makeStyles(theme => ({
       width: '100%',
       padding: '10px 12px',
       marginRight: '10px',
+      textTransform: 'none',
     },
   }))(InputBase);
+
+  const SubscribeButton = withStyles(theme => ({
+    root:{
+        border: `solid 1px ${theme.palette.common.white}`,
+        fontWeight: 'bold',
+        textTransform: 'capitalize',
+        letterSpacing: '3px',
+    }
+}))(Button)
 
 
 export default function Footer(){
@@ -134,7 +148,7 @@ export default function Footer(){
                         />
                     <div>
                         <div> 
-                            <Button variant="outlined" color="secondary">Subscribe</Button>
+                            <SubscribeButton variant="outlined" color="secondary">Subscribe</SubscribeButton>
                         </div>
                     </div>
                     </div>

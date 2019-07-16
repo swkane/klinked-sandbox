@@ -23,5 +23,6 @@ export default {
   primary: "#00356b",
   ronchi: "#edbe5f",
   shadow: "rgba(0, 0, 0, 0.2)",
-  sky: "#d9eff8"
+  sky: "#d9eff8",
+  kenzieGrey: '#7b8898'
 };
