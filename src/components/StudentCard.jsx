@@ -30,7 +30,8 @@ const useStyles = makeStyles(theme => ({
         boxSizing: "border-box",
         height: "152.26px",
         width: "153px",
-        border: "2px solid #1C3869",
+        border: "4px solid white",
+        boxShadow: "0 0 0 2px #1C3869",
     },
     name: {
         height: "29.86px",

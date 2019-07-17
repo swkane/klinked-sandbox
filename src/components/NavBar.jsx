@@ -13,6 +13,7 @@ import IMAGES from "../themes/Images";
 import COLORS from "../themes/Colors";
 import { BASE_HOMEPAGE } from "../constants";
 import { NavBarItem } from "./NavItem";
+// import StudentCard from "../components/StudentCard";
 
 
 const useStyles = makeStyles(theme => ({
