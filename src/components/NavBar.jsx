@@ -1,3 +1,4 @@
+//React
 import React from "react";
 
 import {
@@ -18,6 +19,7 @@ import { NavBarItem } from "./NavItem";
 
 const useStyles = makeStyles(theme => ({
   appBar: {
+    width: '100%',
     backgroundColor: COLORS.white,
     color: COLORS.darkBlue,
     display: "flex",

@@ -1,15 +1,16 @@
 import React from "react";
-import CoverPhoto from '../assets/cover.jpg'
+import CoverImage from '../assets/cover.jpg'
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(theme => ({
     root: {
-        backgroundImage: `url(${CoverPhoto})`,
+        backgroundImage: `url(${CoverImage})`,
         padding: '200px 0px',
         color: theme.palette.primary.white,
         backgroundSize: '100%',
-        backgroundPosition: 'center',
+        backgroundPosition: '0px 20%',
         backgroundRepeat: 'no-repeat',
+        opacity: '0.8',
         textShadow: '0px 1px 2px #616368',
         '& .header':{
             fontSize: '60px',
