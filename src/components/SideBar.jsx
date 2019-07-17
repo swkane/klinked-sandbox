@@ -15,8 +15,9 @@ import Place from '@material-ui/icons/Place';
 import Button from '@material-ui/core/Button';
 import Email from '@material-ui/icons/Email'
 
-//Themes and Colors
+//Themes, Colors, Icons
 import Colors from '../themes/Colors';
+//import MapMarker from '../assets/icons/maps-and-flags.svg'
 
 const useStyles = makeStyles(theme => ({
       root:{
@@ -64,6 +65,11 @@ const useStyles = makeStyles(theme => ({
         justifyContent: 'center',
         alignItems: 'center',
   },
+    wrapper: {
+        padding: '1%',
+        display: 'flex',
+        flexDirection: 'column',
+    },
     list_text: {
         font_family: 'Avenir',
         height: '24px',
@@ -118,6 +124,7 @@ export default function SideBar() {
         return (
           <div className={classes.root}>
           <CssBaseline />
+                <div className={classes.wrapper} />
                 <div className={classes.jobFilter}>
                 <h1 className={classes.header}>
                     Job Roles
@@ -170,12 +177,13 @@ export default function SideBar() {
                 <div className={classes.locationHeader}>
                 <h1 className={classes.location}>
                     Location
-                </h1>
-                    
+                </h1>   
+                    {console.log(<Place/>)}
                     <InputBase
                       className={classes.input}
-                      placeholder={ '  Indianapolis...'}
-                      inputProps={{ 'Avenir': 'Indianapolis...' }}
+                      placeholder={ 'Indianapolis'}
+                      
+                      inputProps={{ 'Avenir': 'Indianapolis...'}}
                     />
                   </div>
                 <Button variant="contained" color="primary" className={classes.button_text}>
