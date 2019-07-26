@@ -11,14 +11,13 @@ import {
   Paper
 } from "@material-ui/core";
 
-import COLORS from "../themes/Colors";
 import { BASE_HOMEPAGE } from "../constants";
 
 const useStyles = makeStyles(theme => ({
   link: {
     color: "inherit",
     "&:hover": {
-      color: COLORS.teal,
+      color: theme.palette.primary.teal,
       textDecoration: "none"
     }
   },
@@ -35,14 +34,14 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(2)
   },
   paperMenu: {
-    backgroundColor: COLORS.darkBlue,
-    color: COLORS.white
+    backgroundColor: theme.palette.primary.darkBlue,
+    color: theme.palette.primary.white
   },
   paperMenuItem: {
     margin: "0",
     minHeight: 0,
     "&:hover": {
-      color: COLORS.teal
+      color: theme.palette.primary.teal
     }
   }
 }));
@@ -93,8 +92,9 @@ export const NavBarItem = ({ navItem }) => {
             <Paper id="menu-list-grow">
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList className={classes.paperMenu}>
-                  {navItem.menuItems.map(item => (
+                  {navItem.menuItems.map((item, i) => (
                     <Link
+                      key={i}
                       className={classes.link}
                       href={
                         item.external ? item.path : BASE_HOMEPAGE + item.path
