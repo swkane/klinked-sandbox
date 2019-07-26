@@ -11,38 +11,36 @@ import {
 } from "@material-ui/core";
 
 import IMAGES from "../themes/Images";
-import COLORS from "../themes/Colors";
 import { BASE_HOMEPAGE } from "../constants";
 import { NavBarItem } from "./NavItem";
 // import StudentCard from "../components/StudentCard";
 
-
 const useStyles = makeStyles(theme => ({
   appBar: {
-    width: '100%',
-    backgroundColor: COLORS.white,
-    color: COLORS.darkBlue,
+    width: "100%",
+    backgroundColor: theme.palette.primary.white,
+    color: theme.palette.primary.darkBlue,
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center"
   },
   callToAction: {
-    marginRight: "65px",
-    color: COLORS.white,
-    backgroundColor: COLORS.darkBlue,
+    marginRight: "45px",
+    color: theme.palette.primary.white,
+    backgroundColor: theme.palette.primary.darkBlue,
     padding: "8px 25px",
     textTransform: "capitalize",
     fontSize: "16px",
     fontFamily: "inherit",
     "&:hover": {
-      backgroundColor: COLORS.lightBlue
+      backgroundColor: theme.palette.primary.lightBlue
     }
   },
   link: {
     color: "inherit",
     "&:hover": {
-      color: COLORS.teal,
+      color: theme.palette.primary.teal,
       textDecoration: "none"
     }
   },
@@ -65,68 +63,16 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function NavBar() {
+export default function NavBar({ navItems }) {
   const classes = useStyles();
-
-  const navItems = [
-    {
-      title: "Programs",
-      path: "/software-engineering",
-      menuItems: [
-        { text: "Software Engineering", path: "/software-engineering" },
-        { text: "UX Engineering", path: "/ux-engineer" },
-        { text: "Digital Marketing", path: "/digital-marketing" },
-        {
-          text: "Kenzie Free",
-          path: "https://online.kenzie.academy",
-          external: true
-        }
-      ]
-    },
-    {
-      title: "About",
-      path: "/about-kenzie-academy",
-      menuItems: [
-        { text: "About Kenzie", path: "/about-kenzie-academy" },
-        { text: "Student Stories", path: "/students" },
-        { text: "Employers", path: "/employers" },
-        { text: "Mentors", path: "/mentors" },
-        {
-          text: "Butler Kenzie Joint Certificates",
-          path: "/butler-kenzie-joint-certificates"
-        },
-        { text: "FAQ", path: "/faq" }
-      ]
-    },
-    {
-      title: "Admissions",
-      path: "/criteria",
-      menuItems: [
-        { text: "Criteria", path: "/criteria" },
-        { text: "Program Cost", path: "/program-cost" },
-        { text: "Scholarships", path: "/scholarships" },
-        { text: "Earn and Learn", path: "/earn-and-learn" },
-        { text: "Degree Pathways", path: "/degree-pathways" }
-      ]
-    },
-    {
-      title: "Connect",
-      path: "/events",
-      menuItems: [
-        { text: "Events", path: "/events" },
-        { text: "Press", path: "/news" },
-        { text: "Contact Us", path: "/connect-with-kenzie" }
-      ]
-    }
-  ];
 
   return (
     <div>
       <AppBar className={classes.appBar} position="static">
         <img className={classes.logo} src={IMAGES.logo} alt="logo" />
         <Toolbar>
-          {navItems.map(navItem => (
-            <NavBarItem navItem={navItem} />
+          {navItems.map((navItem, i) => (
+            <NavBarItem key={i} navItem={navItem} />
           ))}
           <Link className={classes.link} href={BASE_HOMEPAGE + "/blog"}>
             <Typography variant="h6" className={classes.title}>
@@ -149,4 +95,3 @@ export default function NavBar() {
     </div>
   );
 }
-
