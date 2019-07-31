@@ -1,4 +1,5 @@
-html,body {
+html,
+body {
   margin: 0 auto;
   padding: 0;
 }
@@ -6,8 +7,6 @@ html,body {
 .App {
   text-align: center;
   width: 100%;
-  font-family: Avenir, "proxima-nova", "Helvetica Neue", Helvetica, Arial,
-    sans-serif;
 }
 
 .App-logo {
@@ -16,9 +15,8 @@ html,body {
   pointer-events: none;
 }
 
-
 .App-header {
-  background-color:paper;
+  background-color: paper;
   min-height: 100vh;
   display: flex;
   width: 100%;
@@ -26,7 +24,6 @@ html,body {
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-
 }
 
 .App-link {
