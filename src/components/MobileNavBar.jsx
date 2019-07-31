@@ -71,7 +71,6 @@ const useStyles = makeStyles(theme => ({
     color: "inherit",
     fontSize: "17px",
     fontWeight: "500",
-    fontFamily: "Avenir",
     "&:hover": {
       color: theme.palette.primary.teal,
       textDecoration: "none"
@@ -99,7 +98,6 @@ const useStyles = makeStyles(theme => ({
   title: {
     padding: "0px 15px",
     fontSize: "17px",
-    fontFamily: "Avenir",
     fontWeight: "500"
   },
   subList: {
