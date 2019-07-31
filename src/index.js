@@ -10,6 +10,10 @@ import colors from "./themes/Colors";
 
 //creates default theme to be used with material UI components
 const theme = createMuiTheme({
+  typography: {
+    fontFamily:
+      "Avenir, proxima-nova, Helvetica Neue, Helvetica, Arial, sans-serif"
+  },
   palette: {
     primary: {
       main: "#043464",
@@ -29,6 +33,7 @@ const theme = createMuiTheme({
     }
   }
 });
+
 ReactDOM.render(
   <ThemeProvider theme={theme}>
     <CssBaseline />
