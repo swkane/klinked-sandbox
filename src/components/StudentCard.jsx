@@ -116,31 +116,48 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function StudentCard() {
+export default function StudentCard(props) {
   const classes = useStyles();
-
+  const {
+    first_name,
+    last_name,
+    city,
+    state,
+    image,
+    class_name,
+    prior_education
+  } = props.user;
   return (
     <Card className={classes.card}>
-      <Avatar
-        className={classes.avatar}
-        src="https://cdn.pixabay.com/photo/2017/10/10/00/49/female-2835524_960_720.jpg"
-      />
+      <Avatar className={classes.avatar} src={image}></Avatar>
       <div className={classes.wrapperContainer}>
         <div className={classes.topContainer}>
           <div className={classes.upperLeft}>
-            <div className={classes.name}>Katie Johnson</div>
-            <div className={classes.title}>Software Engineer</div>
+            <div className={classes.name}>
+              {first_name} {last_name}
+            </div>
+            <div className={classes.title}>{class_name}</div>
           </div>
           <div className={classes.upperRight}>
-            <div className={classes.quote}>"Jump on life and hang on!"</div>
-            <img src={locationIcon} className={classes.icon} alt="location" />
-            <div className={classes.location}>Indianapolis, IN</div>
+            {/* <div className={classes.quote}>"Jump on life and hang on!"</div> */}
+            {city && (
+              <React.Fragment>
+                <img
+                  src={locationIcon}
+                  className={classes.icon}
+                  alt="location"
+                />
+                <div className={classes.location}>
+                  {city}, {state}
+                </div>
+              </React.Fragment>
+            )}
           </div>
         </div>
         <div className={classes.lowerContainer}>
           <img src={educationIcon} className={classes.icon} alt="education" />
           <div className={classes.education}>
-            Certificate in Fullstack Development, Associate in Business
+            Certificate in Fullstack Development, {prior_education}
           </div>
           <img src={jobIcon} className={classes.icon} alt="job" />
           <div className={classes.job}>Kenzie Coach, Sales Rep.</div>
