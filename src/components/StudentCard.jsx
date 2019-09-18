@@ -116,6 +116,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+<<<<<<< HEAD
 export default function StudentCard(props) {
   const classes = useStyles();
   const {
@@ -152,12 +153,37 @@ export default function StudentCard(props) {
                 </div>
               </React.Fragment>
             )}
+=======
+export default function StudentCard() {
+  const classes = useStyles();
+
+  return (
+    <Card className={classes.card}>
+      <Avatar
+        className={classes.avatar}
+        src="https://cdn.pixabay.com/photo/2017/10/10/00/49/female-2835524_960_720.jpg"
+      />
+      <div className={classes.wrapperContainer}>
+        <div className={classes.topContainer}>
+          <div className={classes.upperLeft}>
+            <div className={classes.name}>Katie Johnson</div>
+            <div className={classes.title}>Software Engineer</div>
+          </div>
+          <div className={classes.upperRight}>
+            <div className={classes.quote}>"Jump on life and hang on!"</div>
+            <img src={locationIcon} className={classes.icon} alt="location" />
+            <div className={classes.location}>Indianapolis, IN</div>
+>>>>>>> 41cd74609e09c3ad873239a082496c42d01386ea
           </div>
         </div>
         <div className={classes.lowerContainer}>
           <img src={educationIcon} className={classes.icon} alt="education" />
           <div className={classes.education}>
+<<<<<<< HEAD
             Certificate in Fullstack Development, {prior_education}
+=======
+            Certificate in Fullstack Development, Associate in Business
+>>>>>>> 41cd74609e09c3ad873239a082496c42d01386ea
           </div>
           <img src={jobIcon} className={classes.icon} alt="job" />
           <div className={classes.job}>Kenzie Coach, Sales Rep.</div>
