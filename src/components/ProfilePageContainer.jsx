@@ -19,7 +19,7 @@ const ProfilePageContainer = () => {
 
   useEffect(() => {
     fetchStudent();
-  });
+  }, []);
 
   return <ProfilePage student={student} />;
 };
