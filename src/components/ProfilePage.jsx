@@ -116,12 +116,14 @@ const ProfilePage = ({ student }) => {
     prior_education,
     github_profile_link,
     linkedin_profile_link,
-    behance_profie_link
+    behance_profie_link,
+    profile_summary,
+    primary_skills
   } = student;
 
   const classes = useStyles();
 
-  // console.log(student);
+  console.log(student);
 
   return (
     <div className={classes.root}>
@@ -196,18 +198,10 @@ const ProfilePage = ({ student }) => {
             />
             {class_name}, {prior_education}
           </div>
-          <p>
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum."
-          </p>
+          <p>{profile_summary}</p>
           <div className="skills">
             <div>
-              <b>Top Skills:</b> list them here
+              <b>Top Skills:</b> {primary_skills}
             </div>
             <div>
               <b>Other Tricks:</b> list sub-skills here
