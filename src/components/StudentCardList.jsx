@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default class StudentCardList extends React.Component {
   state = {
-    users: ""
+    users: []
   };
 
   componentWillMount() {
@@ -19,21 +19,24 @@ export default class StudentCardList extends React.Component {
 
   render() {
     const { users } = this.state;
+
+    const filteredResults = users.filter(student =>
+      this.props.checked.includes(student.class_name)
+    );
+
     return (
       <div
         style={{ marginLeft: "auto", marginRight: "auto", paddingTop: "50px" }}
       >
-        {users && (
-          <div>
-            {users.map((user, i) => (
-              <Link style={{ textDecoration: "none" }} to="/profile" key={i}>
-                <div style={{ marginBottom: "25px" }}>
-                  <StudentCard user={user} />
-                </div>
-              </Link>
-            ))}
-          </div>
-        )}
+        <div>
+          {filteredResults.map((user, i) => (
+            <Link style={{ textDecoration: "none" }} to="/profile" key={i}>
+              <div style={{ marginBottom: "25px" }}>
+                <StudentCard user={user} />
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
     );
   }
