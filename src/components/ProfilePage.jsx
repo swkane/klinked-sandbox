@@ -99,7 +99,7 @@ const ContactButton = withStyles({
   root: {
     borderRadius: "2px",
     display: "flex",
-    fontSize: "20px",
+    fontSize: "18px",
     margin: "40px 0px",
     textTransform: "capitalize"
   }
@@ -154,15 +154,17 @@ const ProfilePage = ({ student }) => {
             <p>Behance</p>
           </div>
         )}
-        <ContactButton size="large" variant="contained" color="primary">
-          <i
-            style={{ paddingRight: "10px", fontSize: "25px" }}
-            className="material-icons"
-          >
-            mail_outline
-          </i>
-          Contact Me
-        </ContactButton>
+        <a href="https://www.kenzie.academy/become-an-employer-partner">
+          <ContactButton size="large" variant="contained" color="primary">
+            {/* <i
+              style={{ paddingRight: "10px", fontSize: "25px" }}
+              className="material-icons"
+            >
+              mail_outline
+            </i> */}
+            Contact Kenzie Careers
+          </ContactButton>
+        </a>
       </div>
 
       <div className="bioColumn">

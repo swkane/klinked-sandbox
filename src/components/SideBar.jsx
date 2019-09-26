@@ -3,15 +3,18 @@ import React from "react";
 
 //Material UI imports
 import { makeStyles } from "@material-ui/core/styles";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
-import ListItemText from "@material-ui/core/ListItemText";
-import Checkbox from "@material-ui/core/Checkbox";
+import {
+  Button,
+  Checkbox,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemSecondaryAction,
+  ListItemText
+} from "@material-ui/core";
+
 // import InputBase from "@material-ui/core/InputBase";
-import Button from "@material-ui/core/Button";
-import Email from "@material-ui/icons/Email";
+// import Email from "@material-ui/icons/Email";
 
 //Themes, Colors, Icons
 import Colors from "../themes/Colors";
@@ -27,7 +30,10 @@ const useStyles = makeStyles(theme => ({
     alignItems: "flex-start",
     flexDirection: "column",
     boxSizing: "border-box",
-    borderRight: "2px solid rgba(204,204,204,0.5)"
+    borderRight: "2px solid rgba(204,204,204,0.5)",
+    "& a": {
+      textDecoration: "none"
+    }
   },
   jobFilter: {
     paddingTop: "20px",
@@ -178,14 +184,16 @@ export default function SideBar({ checked, setChecked }) {
         <h1 className={classes.location}>Location</h1>
         <InputBase className={classes.input} placeholder={" Indianapolis..."} />
       </div> */}
-      <Button
-        variant="contained"
-        color="primary"
-        className={classes.button_text}
-      >
-        <Email style={{ paddingRight: "8px" }} />
-        Contact Kenzie Staff
-      </Button>
+      <a href="https://www.kenzie.academy/become-an-employer-partner">
+        <Button
+          variant="contained"
+          color="primary"
+          className={classes.button_text}
+        >
+          {/* <Email style={{ paddingRight: "8px" }} /> */}
+          Contact Kenzie Staff
+        </Button>
+      </a>
     </div>
   );
 }
