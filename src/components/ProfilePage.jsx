@@ -123,7 +123,7 @@ const ProfilePage = ({ student }) => {
 
   const classes = useStyles();
 
-  console.log(student);
+  // console.log(student);
 
   return (
     <div className={classes.root}>
