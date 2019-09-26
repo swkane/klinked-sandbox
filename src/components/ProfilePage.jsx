@@ -118,7 +118,8 @@ const ProfilePage = ({ student }) => {
     linkedin_profile_link,
     behance_profie_link,
     profile_summary,
-    primary_skills
+    primary_skills,
+    title
   } = student;
 
   const classes = useStyles();
@@ -156,12 +157,6 @@ const ProfilePage = ({ student }) => {
         )}
         <a href="https://www.kenzie.academy/become-an-employer-partner">
           <ContactButton size="large" variant="contained" color="primary">
-            {/* <i
-              style={{ paddingRight: "10px", fontSize: "25px" }}
-              className="material-icons"
-            >
-              mail_outline
-            </i> */}
             Contact Kenzie Careers
           </ContactButton>
         </a>
@@ -171,7 +166,7 @@ const ProfilePage = ({ student }) => {
         <div className="header">
           <div>
             <div className="name">{first_name + " " + last_name}</div>
-            <div className="title">Title</div>
+            <div className="title">{title}</div>
           </div>
 
           <div className="location">

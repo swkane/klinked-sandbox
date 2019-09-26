@@ -12,13 +12,8 @@ import {
   ListItemSecondaryAction,
   ListItemText
 } from "@material-ui/core";
-
 // import InputBase from "@material-ui/core/InputBase";
-// import Email from "@material-ui/icons/Email";
-
-//Themes, Colors, Icons
 import Colors from "../themes/Colors";
-//import MapMarker from '../assets/icons/maps-and-flags.svg'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -190,8 +185,7 @@ export default function SideBar({ checked, setChecked }) {
           color="primary"
           className={classes.button_text}
         >
-          {/* <Email style={{ paddingRight: "8px" }} /> */}
-          Contact Kenzie Staff
+          Contact Kenzie Careers
         </Button>
       </a>
     </div>
