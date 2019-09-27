@@ -3,19 +3,17 @@ import React from "react";
 
 //Material UI imports
 import { makeStyles } from "@material-ui/core/styles";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
-import ListItemText from "@material-ui/core/ListItemText";
-import Checkbox from "@material-ui/core/Checkbox";
-import InputBase from "@material-ui/core/InputBase";
-import Button from "@material-ui/core/Button";
-import Email from "@material-ui/icons/Email";
-
-//Themes, Colors, Icons
+import {
+  Button,
+  Checkbox,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemSecondaryAction,
+  ListItemText
+} from "@material-ui/core";
+// import InputBase from "@material-ui/core/InputBase";
 import Colors from "../themes/Colors";
-//import MapMarker from '../assets/icons/maps-and-flags.svg'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -27,7 +25,10 @@ const useStyles = makeStyles(theme => ({
     alignItems: "flex-start",
     flexDirection: "column",
     boxSizing: "border-box",
-    borderRight: "2px solid rgba(204,204,204,0.5)"
+    borderRight: "2px solid rgba(204,204,204,0.5)",
+    "& a": {
+      textDecoration: "none"
+    }
   },
   jobFilter: {
     paddingTop: "20px",
@@ -86,14 +87,17 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SideBar() {
+export default function SideBar({ checked, setChecked }) {
   const classes = useStyles();
-  const [checked, setChecked] = React.useState([0]);
+  // const [checked, setChecked] = React.useState([
+  //   "UX Designer",
+  //   "Software Engineer"
+  // ]);
 
   const handleToggle = value => () => {
     const currentIndex = checked.indexOf(value);
     const newChecked = [...checked];
-
+    // setFilter(value);
     if (currentIndex === -1) {
       newChecked.push(value);
     } else {
@@ -107,15 +111,7 @@ export default function SideBar() {
       <div className={classes.wrapper} />
       <div className={classes.jobFilter}>Job Roles</div>
       <List className={classes.list}>
-        {[
-          "Full-Stack Engineer",
-          "Front-End",
-          "Back-End",
-          "UX Engineer",
-          "UX Designer",
-          "UI Engineer",
-          "Digital Marketer"
-        ].map(value => {
+        {["Software Engineer", "UX Designer"].map(value => {
           const labelId = `checkbox-list-secondary-label-${value}`;
           return (
             <ListItem
@@ -146,7 +142,7 @@ export default function SideBar() {
           );
         })}
       </List>
-      <div className={classes.jobFilter}>Job Type</div>
+      {/* <div className={classes.jobFilter}>Job Type</div>
       <List className={classes.list}>
         {["Full Time", "Part Time", "Apprenticeship", "Internship"].map(
           value => {
@@ -182,15 +178,16 @@ export default function SideBar() {
       <div className={classes.locationHeader}>
         <h1 className={classes.location}>Location</h1>
         <InputBase className={classes.input} placeholder={" Indianapolis..."} />
+      </div> */}
+      <a href="https://www.kenzie.academy/become-an-employer-partner">
         <Button
           variant="contained"
           color="primary"
           className={classes.button_text}
         >
-          <Email style={{ paddingRight: "8px" }} />
-          Contact Kenzie Staff
+          Contact Kenzie Careers
         </Button>
-      </div>
+      </a>
     </div>
   );
 }
