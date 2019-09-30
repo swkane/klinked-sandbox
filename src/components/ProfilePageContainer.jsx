@@ -7,12 +7,12 @@ import ProfilePage from "./ProfilePage";
 // https://reactjs.org/docs/hooks-effect.html
 // https://codeburst.io/how-to-fetch-data-from-an-api-with-react-hooks-9e7202b8afcd
 
-const ProfilePageContainer = () => {
+const ProfilePageContainer = ({ match }) => {
   const [student, setStudent] = useState({});
 
   async function fetchStudent() {
     const res = await fetch(
-      process.env.REACT_APP_API + "/api/students/user/12"
+      process.env.REACT_APP_API + `/api/students/user/${match.params.id}`
     );
     res.json().then(student => setStudent(student[0]));
   }

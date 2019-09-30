@@ -30,7 +30,11 @@ export default class StudentCardList extends React.Component {
       >
         <div>
           {filteredResults.map((user, i) => (
-            <Link style={{ textDecoration: "none" }} to="/profile" key={i}>
+            <Link
+              style={{ textDecoration: "none" }}
+              to={`/profile/${user.id}/${user.first_name}-${user.last_name}`}
+              key={i}
+            >
               <div style={{ marginBottom: "25px" }}>
                 <StudentCard user={user} />
               </div>
