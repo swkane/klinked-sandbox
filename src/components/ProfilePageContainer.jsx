@@ -10,16 +10,21 @@ import ProfilePage from "./ProfilePage";
 const ProfilePageContainer = ({ match }) => {
   const [student, setStudent] = useState({});
 
-  async function fetchStudent() {
-    const res = await fetch(
-      process.env.REACT_APP_API + `/api/students/user/${match.params.id}`
-    );
-    res.json().then(student => setStudent(student[0]));
-  }
-
   useEffect(() => {
+    // https://reactjs.org/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies
+    async function fetchStudent() {
+      const res = await fetch(
+        process.env.REACT_APP_API + `/api/students/user/${match.params.id}`
+      );
+      res.json().then(student => setStudent(student[0]));
+    }
+
     fetchStudent();
-  }, []);
+
+    return function cleanupFetchStudent() {
+      setStudent({});
+    };
+  }, [match]);
 
   return <ProfilePage student={student} />;
 };
