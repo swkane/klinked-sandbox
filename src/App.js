@@ -12,7 +12,10 @@ function App() {
       <BaseLayout>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/profile" component={ProfilePageContainer} />
+          <Route
+            path="/profile/:id/:first_name-:last_name"
+            component={ProfilePageContainer}
+          />
         </Switch>
       </BaseLayout>
     </div>
