@@ -7,7 +7,7 @@ import Github from "../assets/icons/github_blue.svg";
 import Linkedin from "../assets/icons/linkedin_blue.svg";
 import Behance from "../assets/icons/behance_blue.svg";
 import Location from "../assets/icons/location_gray.svg";
-import Work from "../assets/icons/work_gray.svg";
+// import Work from "../assets/icons/work_gray.svg";
 import Education from "../assets/icons/education_gray.svg";
 
 // This Component uses hooks, if you would like a introduction / refresher to hooks please read the following resources:
@@ -119,6 +119,7 @@ const ProfilePage = ({ student }) => {
     behance_profie_link,
     profile_summary,
     primary_skills,
+    secondary_skills,
     title
   } = student;
 
@@ -179,14 +180,14 @@ const ProfilePage = ({ student }) => {
           </div>
         </div>
         <div className="info">
-          <div>
+          {/* <div>
             <img
               style={{ height: "30px", paddingRight: "15px" }}
               src={Work}
               alt="work"
             />
             Current Job
-          </div>
+          </div> */}
           <div>
             <img
               style={{ height: "30px", paddingRight: "15px" }}
@@ -198,10 +199,10 @@ const ProfilePage = ({ student }) => {
           <p>{profile_summary}</p>
           <div className="skills">
             <div>
-              <b>Top Skills:</b> {primary_skills}
+              <b>Primary Skills:</b> {primary_skills}
             </div>
             <div>
-              <b>Other Tricks:</b> list sub-skills here
+              <b>Secondary Skills:</b> {secondary_skills}
             </div>
           </div>
         </div>
