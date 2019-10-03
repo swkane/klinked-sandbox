@@ -9,7 +9,6 @@ export default class StudentCardList extends React.Component {
     isLoading: false
   };
 
-
   componentDidMount() {
     this.setState({ isLoading: true });
     fetch(process.env.REACT_APP_API + "/api/students/page/1")
@@ -18,8 +17,8 @@ export default class StudentCardList extends React.Component {
         this.setState({
           users: myJson
         });
+        this.setState({ isLoading: false });
       });
-    this.setState({ isLoading: false });
   }
 
   render() {
@@ -33,7 +32,11 @@ export default class StudentCardList extends React.Component {
       <div
         style={{ marginLeft: "auto", marginRight: "auto", paddingTop: "50px" }}
       >
-        {this.state.isLoading && <CircularProgress />}
+        {this.state.isLoading && (
+          <div style={{ marginTop: "20px" }}>
+            <CircularProgress />
+          </div>
+        )}
         <div>
           {filteredResults.map((user, i) => (
             <Link
