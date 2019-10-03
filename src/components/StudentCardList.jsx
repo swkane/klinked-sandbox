@@ -5,10 +5,12 @@ import { CircularProgress } from "@material-ui/core";
 
 export default class StudentCardList extends React.Component {
   state = {
-    users: []
+    users: [],
+    isLoading: false
   };
 
   componentWillMount() {
+    this.setState({ isLoading: true });
     fetch(process.env.REACT_APP_API + "/api/students/page/1")
       .then(res => res.json())
       .then(myJson => {
@@ -16,6 +18,7 @@ export default class StudentCardList extends React.Component {
           users: myJson
         });
       });
+    this.setState({ isLoading: false });
   }
 
   render() {
@@ -29,7 +32,7 @@ export default class StudentCardList extends React.Component {
       <div
         style={{ marginLeft: "auto", marginRight: "auto", paddingTop: "50px" }}
       >
-        <CircularProgress />
+        {this.state.isLoading && <CircularProgress />}
         <div>
           {filteredResults.map((user, i) => (
             <Link
