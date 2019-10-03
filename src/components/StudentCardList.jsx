@@ -9,7 +9,8 @@ export default class StudentCardList extends React.Component {
     isLoading: false
   };
 
-  componentWillMount() {
+
+  componentDidMount() {
     this.setState({ isLoading: true });
     fetch(process.env.REACT_APP_API + "/api/students/page/1")
       .then(res => res.json())
