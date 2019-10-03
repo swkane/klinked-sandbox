@@ -3,6 +3,8 @@ import { makeStyles, withStyles } from "@material-ui/styles";
 import { Button, Avatar } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
+import { CircularProgress } from "@material-ui/core";
+
 import Github from "../assets/icons/github_blue.svg";
 import Linkedin from "../assets/icons/linkedin_blue.svg";
 import Behance from "../assets/icons/behance_blue.svg";
@@ -91,6 +93,12 @@ const useStyles = makeStyles(theme => ({
     "& a": {
       textDecoration: "none",
       color: "inherit"
+    },
+    "& .indicatorContainer": {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      width: "100%"
     }
   }
 }));
@@ -105,7 +113,7 @@ const ContactButton = withStyles({
   }
 })(Button);
 
-const ProfilePage = ({ student }) => {
+const ProfilePage = ({ student, isLoading }) => {
   const {
     first_name,
     last_name,
@@ -163,50 +171,48 @@ const ProfilePage = ({ student }) => {
         </a>
       </div>
 
-      <div className="bioColumn">
-        <div className="header">
-          <div>
-            <div className="name">{first_name + " " + last_name}</div>
-            <div className="title">{title}</div>
-          </div>
+      {isLoading ? (
+        <div className="indicatorContainer">
+          <CircularProgress />
+        </div>
+      ) : (
+        <div className="bioColumn">
+          <div className="header">
+            <div>
+              <div className="name">{first_name + " " + last_name}</div>
+              <div className="title">{title}</div>
+            </div>
 
-          <div className="location">
-            {city}, {state}
-            <img
-              style={{ height: "30px" }}
-              src={Location}
-              alt="location"
-            />{" "}
-          </div>
-        </div>
-        <div className="info">
-          {/* <div>
-            <img
-              style={{ height: "30px", paddingRight: "15px" }}
-              src={Work}
-              alt="work"
-            />
-            Current Job
-          </div> */}
-          <div>
-            <img
-              style={{ height: "30px", paddingRight: "15px" }}
-              src={Education}
-              alt="education"
-            />
-            {class_name}, {prior_education}
-          </div>
-          <p>{profile_summary}</p>
-          <div className="skills">
-            <div>
-              <b>Primary Skills:</b> {primary_skills}
+            <div className="location">
+              {city}, {state}
+              <img
+                style={{ height: "30px" }}
+                src={Location}
+                alt="location"
+              />{" "}
             </div>
+          </div>
+          <div className="info">
             <div>
-              <b>Secondary Skills:</b> {secondary_skills}
+              <img
+                style={{ height: "30px", paddingRight: "15px" }}
+                src={Education}
+                alt="education"
+              />
+              {class_name}, {prior_education}
+            </div>
+            <p>{profile_summary}</p>
+            <div className="skills">
+              <div>
+                <b>Primary Skills:</b> {primary_skills}
+              </div>
+              <div>
+                <b>Secondary Skills:</b> {secondary_skills}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
