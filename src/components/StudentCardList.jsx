@@ -1,6 +1,7 @@
 import React from "react";
 import StudentCard from "./StudentCard";
 import { Link } from "react-router-dom";
+import { CircularProgress } from "@material-ui/core";
 
 export default class StudentCardList extends React.Component {
   state = {
@@ -28,6 +29,7 @@ export default class StudentCardList extends React.Component {
       <div
         style={{ marginLeft: "auto", marginRight: "auto", paddingTop: "50px" }}
       >
+        <CircularProgress />
         <div>
           {filteredResults.map((user, i) => (
             <Link
