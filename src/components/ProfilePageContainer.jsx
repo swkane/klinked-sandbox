@@ -9,14 +9,17 @@ import ProfilePage from "./ProfilePage";
 
 const ProfilePageContainer = ({ match }) => {
   const [student, setStudent] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     // https://reactjs.org/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies
     async function fetchStudent() {
+      setIsLoading(true);
       const res = await fetch(
         process.env.REACT_APP_API + `/api/students/user/${match.params.id}`
       );
       res.json().then(student => setStudent(student[0]));
+      setIsLoading(false);
     }
 
     fetchStudent();
@@ -26,7 +29,7 @@ const ProfilePageContainer = ({ match }) => {
     };
   }, [match]);
 
-  return <ProfilePage student={student} />;
+  return <ProfilePage isLoading={isLoading} student={student} />;
 };
 
 export default ProfilePageContainer;
